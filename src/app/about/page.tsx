@@ -1,10 +1,17 @@
-import React from 'react';
+'use client'
+
+import React, {useEffect, useState} from 'react';
 import {Button} from "@/components/button";
 import Link from "next/link";
 
 export default function AboutPage () {
-    console.log('We are creating a server-component')
-    const lastUpdated = new Date().toISOString();
+    //console.log('We are creating a server-component')
+
+    const [lastUpload, setLastUpload] = useState('')
+
+    useEffect(()=>{
+        setLastUpload(new Date().toISOString())
+    }, [])
 
     return (
         <div className={'p-8'}>
@@ -13,7 +20,7 @@ export default function AboutPage () {
             <p className={'mt-4'}>Эта страница полностью отображается на сервере. Для этого компонента
             JS не отправляется в браузер</p>
             <div>
-                <p>Последнее обновление: {lastUpdated}</p>
+                <p>Последнее обновление: {lastUpload}</p>
                 <Button/>
             </div>
         </div>
